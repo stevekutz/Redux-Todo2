@@ -25,7 +25,7 @@ export function spreadReducers (state = initialState, action ) {
   switch(action.type) {
 
     // syntax using chaining to find specific action type
-    case actions_spread.ADD_TODO:
+  /*  case actions_spread.ADD_TODO:
 
       if(action.payload) {    // do NOT add empty todo !!!
         return {
@@ -36,7 +36,18 @@ export function spreadReducers (state = initialState, action ) {
           ]
         };
       }
+  */
 
+    case actions_spread.ADD_TODO:
+
+      if(action.payload) {
+        return {
+          ...state.todos,
+          todos: state.todos.concat({value: action.payload, completed: false, id: Date.now()})
+        }
+      }
+
+/*
     case actions_spread.TOGGLE_TODO:
       return {
         ...state,
@@ -51,17 +62,28 @@ export function spreadReducers (state = initialState, action ) {
           }
 
         })};
+*/
+    case actions_spread.TOGGLE_TODO:
+      return {
+        ...state,
+        todos: state.todos.map(todoTask => {
+          return  (todoTask.id === action.payload ? {...todoTask, completed: !todoTask.completed} : todoTask )
+        })
+
+      };
+
+
 
     case actions_spread.CLEAR_COMPLETED:
       console.log("CLEAR called");
       return {
-        // ...state,    // NOT NEEDED since we are filtering anyway!!!!
+      //   ...state.todos,    // NOT NEEDED since we are filtering anyway!!!!
         todos: state.todos.filter(todoItem => todoItem.completed === false)
       };
 
     case actions_spread.REMOVE_TODO:
       return {
-        ...state,
+      //  ...state,          // NOT NEEDED since we are filtering anyway!!!!
         todos: state.todos.filter(todoItem => todoItem.id !== action.payload)
 
       };

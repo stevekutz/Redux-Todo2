@@ -24,7 +24,7 @@ export function objectAssignReducers (state = initialState, action ) {
   console.log(state);
   switch(action.type) {
 
-
+/*
     // syntax using chaining to find specific action type
     case actions_ObjectAssign.ADD_TODO_OA:
       console.log(state);
@@ -32,6 +32,15 @@ export function objectAssignReducers (state = initialState, action ) {
         return Object.assign( {}, state,
           { todosOA: [...state.todosOA, {value: action.payload, completed: false, id: Date.now()}] });
       }
+*/
+        // using concat
+    case actions_ObjectAssign.ADD_TODO_OA:
+      if(action.payload) {
+        return Object.assign({}, state,
+          {todosOA: state.todosOA.concat( {value: action.payload, completed: false, id: Date.now()} )})
+      }
+
+
 
     case actions_ObjectAssign.TOGGLE_TODO_OA:
       return Object.assign( {}, state,
