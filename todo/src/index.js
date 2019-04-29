@@ -20,12 +20,12 @@ const rootElement = document.getElementById('root');
 ReactDOM.render(
   <Provider className = "provider" store = {store}>
     <TodoListSpread
-      titleProp = "My Todo List spread!!!"
-      subTitleProp = "(as prop passed down)"
+      titleProp = "My Todo List using spread reducers!!!"
+      subTitleProp = "(titles are props passed down - old way, dumb component)"
     />
     <TodoListOA
-      titleProp = "My Todo List OA!!!"
-      subTitleProp = "(as prop passed down)"
+      titleProp = "My Todo List using Object.assign reducers!!!"
+      subTitleProp = "(titles are props passed down - old way, dumb component)"
     />
 
   </Provider>

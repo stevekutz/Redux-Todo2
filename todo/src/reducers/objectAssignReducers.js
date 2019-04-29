@@ -1,5 +1,5 @@
-import {ADD_TODO_OA, TOGGLE_TODO_OA,  CLEAR_COMPLETED, REMOVE_TODO} from "../actions";
-
+//import {ADD_TODO_OA, TOGGLE_TODO_OA, REMOVE_TODO_OA, CLEAR_COMPLETED_OA} from "../actions";
+import {actions_ObjectAssign} from '../actions/index';
 
 const initialState = {
   todosOA:
@@ -22,17 +22,14 @@ export function objectAssignReducers (state = initialState, action ) {
   console.log(state);
   switch(action.type) {
 
-    case ADD_TODO_OA:
+    case actions_ObjectAssign.ADD_TODO_OA:
       console.log(state);
       if(action.payload) {
-        return Object.assign
-        ( {},
-          state,
-          { todosOA: [...state.todosOA, {value: action.payload, completed: false, id: Date.now()}] }
-        );
+        return Object.assign( {}, state,
+          { todosOA: [...state.todosOA, {value: action.payload, completed: false, id: Date.now()}] });
       }
 
-    case TOGGLE_TODO_OA:
+    case actions_ObjectAssign.TOGGLE_TODO_OA:
       return Object.assign( {}, state,
         { todosOA: state.todosOA.map(todoTask => {
             if (todoTask.id === action.payload) {
@@ -49,21 +46,13 @@ export function objectAssignReducers (state = initialState, action ) {
 
       );
 
+    case actions_ObjectAssign.CLEAR_COMPLETED_OA:
+      return Object.assign({}, state,
+        { todosOA: state.todosOA.filter(todoItem => todoItem.completed === false) });
 
-    case CLEAR_COMPLETED:
-      console.log("CLEAR called");
-      return {
-        // ...state,    // NOT NEEDED since we are filtering anyway!!!!
-        todosOA: state.todosOA.filter(todoItem => todoItem.completed === false)
-      };
-
-    case REMOVE_TODO:
-      return {
-        ...state,
-        todosOA: state.todosOA.filter(todoItem => todoItem.id !== action.payload)
-
-      };
-
+    case actions_ObjectAssign.REMOVE_TODO_OA:
+      return Object.assign( {}, state,
+        { todosOA: state.todosOA.filter(todoItem => todoItem.id !== action.payload) });
 
     default:
       return state;

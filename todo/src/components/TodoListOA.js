@@ -2,7 +2,7 @@ import React from 'react';
 import './TodoList.css';
 
 import {connect} from 'react-redux';
-import {addTodoOA, toggleTodoOA, clearCompleted, removeTodo} from "../actions";
+import {addTodoOA, toggleTodoOA, clearCompletedOA, removeTodoOA} from "../actions/actions_ObjectAssign";
 
 class TodoListOA extends React.Component {
   state = {
@@ -38,12 +38,12 @@ class TodoListOA extends React.Component {
   };
 
   handleClearCompleted = () => {
-    this.props.clearCompleted();
+    this.props.clearCompletedOA();
   };
 
   handleRemoveTodo = (id) => {
     console.log(id);
-    this.props.removeTodo(id);
+    this.props.removeTodoOA(id);
 
   };
 
@@ -115,15 +115,15 @@ class TodoListOA extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return {
-    todosAsPropsOA: state.OAreducers.todosOA
-
+  return {              // receive initial state from reducer
+    todosAsPropsOA: state.OAreducers.todosOA   // NOTICE how we access state !!
+                        // then any updates to state
   };
 };
 
 export default connect (
   mapStateToProps,
-  {addTodoOA, toggleTodoOA, clearCompleted, removeTodo}
+  {addTodoOA, toggleTodoOA, clearCompletedOA, removeTodoOA}
 
 
 )(TodoListOA);

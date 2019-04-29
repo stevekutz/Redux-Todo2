@@ -2,7 +2,7 @@ import React from 'react';
 import './TodoList.css';
 
 import {connect} from 'react-redux';
-import {addTodo, toggleTodo, clearCompleted, removeTodo} from "../actions";
+import {addTodo, toggleTodo, clearCompleted, removeTodo} from "../actions/actions_spread";
 
 class TodoListSpread extends React.Component {
   state = {
@@ -120,9 +120,9 @@ class TodoListSpread extends React.Component {
 
 const mapStateToProps = state => {
   console.log("TodoListSpread state >>> ",state);
-  return {
-    todosAsProps: state.spreadReducers.todos
-
+  return {                      // receive initial state from reducer
+    todosAsProps: state.spreadReducers.todos   // NOTICE how we access state !!
+                                // then any updates to state
   };
 };
 

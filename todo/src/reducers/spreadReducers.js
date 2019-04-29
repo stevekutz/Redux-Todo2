@@ -1,5 +1,5 @@
-import {ADD_TODO, TOGGLE_TODO, CLEAR_COMPLETED, REMOVE_TODO} from "../actions";
-
+//import {ADD_TODO, TOGGLE_TODO, CLEAR_COMPLETED, REMOVE_TODO} from "../actions";
+import {actions_spread} from '../actions/index';
 
 const initialState = {
   todos:
@@ -21,9 +21,7 @@ const initialState = {
 export function spreadReducers (state = initialState, action ) {
 
   switch(action.type) {
-
-
-    case ADD_TODO:
+    case actions_spread.ADD_TODO:
 
       if(action.payload) {    // do NOT add empty todo !!!
         return {
@@ -35,7 +33,7 @@ export function spreadReducers (state = initialState, action ) {
         };
       }
 
-    case TOGGLE_TODO:
+    case actions_spread.TOGGLE_TODO:
       return {
         ...state,
         todos: state.todos.map(todoTask => {
@@ -50,14 +48,14 @@ export function spreadReducers (state = initialState, action ) {
 
         })};
 
-    case CLEAR_COMPLETED:
+    case actions_spread.CLEAR_COMPLETED:
       console.log("CLEAR called");
       return {
         // ...state,    // NOT NEEDED since we are filtering anyway!!!!
         todos: state.todos.filter(todoItem => todoItem.completed === false)
       };
 
-    case REMOVE_TODO:
+    case actions_spread.REMOVE_TODO:
       return {
         ...state,
         todos: state.todos.filter(todoItem => todoItem.id !== action.payload)
