@@ -27,8 +27,6 @@ ReactDOM.render(
       titleProp = "My Todo List using Object.assign reducers!!!"
       subTitleProp = "(titles are props passed down - old way, dumb component)"
     />
-
   </Provider>
-
   , rootElement);
 

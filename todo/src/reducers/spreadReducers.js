@@ -42,7 +42,7 @@ export function spreadReducers (state = initialState, action ) {
 
       if(action.payload) {
         return {
-          ...state.todos,
+         ...state.todos,
           todos: state.todos.concat({value: action.payload, completed: false, id: Date.now()})
         }
       }
@@ -65,7 +65,7 @@ export function spreadReducers (state = initialState, action ) {
 */
     case actions_spread.TOGGLE_TODO:
       return {
-        ...state,
+        ...state.todos,
         todos: state.todos.map(todoTask => {
           return  (todoTask.id === action.payload ? {...todoTask, completed: !todoTask.completed} : todoTask )
         })
@@ -77,13 +77,13 @@ export function spreadReducers (state = initialState, action ) {
     case actions_spread.CLEAR_COMPLETED:
       console.log("CLEAR called");
       return {
-      //   ...state.todos,    // NOT NEEDED since we are filtering anyway!!!!
+         ...state.todos,
         todos: state.todos.filter(todoItem => todoItem.completed === false)
       };
 
     case actions_spread.REMOVE_TODO:
       return {
-      //  ...state,          // NOT NEEDED since we are filtering anyway!!!!
+        ...state,
         todos: state.todos.filter(todoItem => todoItem.id !== action.payload)
 
       };

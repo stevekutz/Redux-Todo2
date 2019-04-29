@@ -83,7 +83,7 @@ function reducer (state = initialState, action ) {
     case CLEAR_COMPLETED:
       console.log("CLEAR called");
       return {
-        // ...state,    // NOT NEEDED since we are filtering anyway!!!!
+         ...state,    // NOT NEEDED since we are filtering anyway!!!!
         todos: state.todos.filter(todoItem => todoItem.completed === false)
       };
 
