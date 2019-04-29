@@ -1,4 +1,6 @@
 //import {ADD_TODO, TOGGLE_TODO, CLEAR_COMPLETED, REMOVE_TODO} from "../actions";
+
+// NICER way of using lots of actions
 import {actions_spread} from '../actions/index';
 
 const initialState = {
@@ -21,6 +23,8 @@ const initialState = {
 export function spreadReducers (state = initialState, action ) {
 
   switch(action.type) {
+
+    // syntax using chaining to find specific action type
     case actions_spread.ADD_TODO:
 
       if(action.payload) {    // do NOT add empty todo !!!

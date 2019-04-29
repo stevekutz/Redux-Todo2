@@ -1,7 +1,7 @@
 import React from 'react';
 import './TodoList.css';
 
-import {connect} from 'react-redux';
+import {connect} from 'react-redux';                                   // we MUST point to specific actions file now
 import {addTodoOA, toggleTodoOA, clearCompletedOA, removeTodoOA} from "../actions/actions_ObjectAssign";
 
 class TodoListOA extends React.Component {

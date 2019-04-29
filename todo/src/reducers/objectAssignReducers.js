@@ -1,4 +1,6 @@
 //import {ADD_TODO_OA, TOGGLE_TODO_OA, REMOVE_TODO_OA, CLEAR_COMPLETED_OA} from "../actions";
+
+// NICER way of using lots of actions
 import {actions_ObjectAssign} from '../actions/index';
 
 const initialState = {
@@ -22,6 +24,8 @@ export function objectAssignReducers (state = initialState, action ) {
   console.log(state);
   switch(action.type) {
 
+
+    // syntax using chaining to find specific action type
     case actions_ObjectAssign.ADD_TODO_OA:
       console.log(state);
       if(action.payload) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import './TodoList.css';
 
-import {connect} from 'react-redux';
+import {connect} from 'react-redux';                            // we MUST point to specific actions file now
 import {addTodo, toggleTodo, clearCompleted, removeTodo} from "../actions/actions_spread";
 
 class TodoListSpread extends React.Component {
